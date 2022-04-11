@@ -19,7 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
       'Resources',
       'Entertainment',
       'Zoom Meetings',
-      'Skills'
+      'Your Skills',
+      'Usage'
     ];
     return CustomScaffold(
       title: "Pure Hours",

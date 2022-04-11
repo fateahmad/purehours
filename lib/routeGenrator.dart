@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:purehours/auth/welcome.dart';
 import 'package:purehours/auth/login.dart';
 import 'package:purehours/auth/signup.dart';
+import 'package:purehours/user/addskills.dart';
 import 'package:purehours/user/daySelection.dart';
+import 'package:purehours/user/test.dart';
 import 'package:purehours/user/timetable.dart';
 import 'package:purehours/user/homeScreen.dart';
 import 'package:purehours/user/skills.dart';
+import 'package:purehours/user/usageScreen.dart';
 
 class RouteGenrator {
   static Route<dynamic> genrateRoute(RouteSettings settings) {
+    final args = settings.arguments;
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => const Welcome());
@@ -29,11 +33,15 @@ class RouteGenrator {
       case '/Resources':
         return MaterialPageRoute(builder: (_) => const TimetableScreen());
       case '/Entertainment':
-        return MaterialPageRoute(builder: (_) => const TimetableScreen());
+        return MaterialPageRoute(builder: (_) => const MyApp());
       case '/Zoom Meetings':
         return MaterialPageRoute(builder: (_) => const TimetableScreen());
-      case '/Skills':
+      case '/Your Skills':
         return MaterialPageRoute(builder: (_) => const Skills());
+      case '/Usage':
+        return MaterialPageRoute(builder: (_) => const AppUsageScreen());
+      case '/Skills':
+        return MaterialPageRoute(builder: (_) => const AddSkills());
       default:
         return _routeNotExist();
     }

@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 class CustomScaffold extends StatelessWidget {
   final String title;
   final Widget body;
-  final bool icon;
+  final Icon icon;
+  final bool showIcon;
+  final parameters;
   const CustomScaffold(
-      {Key? key, required this.title, required this.body, this.icon = false})
+      {Key? key,
+      required this.title,
+      required this.body,
+      this.showIcon = true,
+      this.parameters,
+      this.icon = const Icon(Icons.search)})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -14,14 +21,20 @@ class CustomScaffold extends StatelessWidget {
         title: Text(title),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/editSkills');
-              },
-              icon: Icon(icon ? Icons.edit : null),
-            ),
-          )
+              padding: const EdgeInsets.only(right: 16.0),
+              child: showIcon
+                  ? IconButton(
+                      onPressed: () {
+                        if (parameters == null) {
+                          Navigator.of(context).pushNamed('/$title');
+                        } else {
+                          Navigator.of(context)
+                              .pushNamed('/$title', arguments: parameters);
+                        }
+                      },
+                      icon: icon,
+                    )
+                  : null)
         ],
       ),
       body: Container(

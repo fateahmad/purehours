@@ -15,7 +15,8 @@ class _SkillsState extends State<Skills> {
     List<String> items = ['Sleeping', 'Coding', 'Sleeping Again'];
     return CustomScaffold(
         title: "Skills",
-        icon: true,
+        parameters: items,
+        icon: const Icon(Icons.edit),
         body: CustomListviewBuilder(
           items: items,
           push: false,
