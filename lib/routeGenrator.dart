@@ -5,6 +5,7 @@ import 'package:purehours/auth/signup.dart';
 import 'package:purehours/user/addskills.dart';
 import 'package:purehours/user/daySelection.dart';
 import 'package:purehours/user/test.dart';
+import 'package:purehours/user/timerScreen.dart' as tm;
 import 'package:purehours/user/timetable.dart';
 import 'package:purehours/user/homeScreen.dart';
 import 'package:purehours/user/skills.dart';
@@ -42,6 +43,8 @@ class RouteGenrator {
         return MaterialPageRoute(builder: (_) => const AppUsageScreen());
       case '/Skills':
         return MaterialPageRoute(builder: (_) => const AddSkills());
+      case '/timerScreen':
+        return MaterialPageRoute(builder: (_) => const tm.timerScreen());
       default:
         return _routeNotExist();
     }
