@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:purehours/auth/welcome.dart';
 import 'package:purehours/auth/login.dart';
 import 'package:purehours/auth/signup.dart';
 import 'package:purehours/user/addskills.dart';
 import 'package:purehours/user/daySelection.dart';
-import 'package:purehours/user/test.dart';
 import 'package:purehours/user/timerScreen.dart' as tm;
 import 'package:purehours/user/timetable.dart';
 import 'package:purehours/user/homeScreen.dart';
@@ -34,7 +34,7 @@ class RouteGenrator {
       case '/Resources':
         return MaterialPageRoute(builder: (_) => const TimetableScreen());
       case '/Entertainment':
-        return MaterialPageRoute(builder: (_) => const MyApp());
+        return MaterialPageRoute(builder: (_) => const TimetableScreen());
       case '/Zoom Meetings':
         return MaterialPageRoute(builder: (_) => const TimetableScreen());
       case '/Your Skills':

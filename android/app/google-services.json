@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "638376587168",
+    "project_id": "purehours-flutter",
+    "storage_bucket": "purehours-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638376587168:android:f504b7a7f9a7f8395e3ec5",
+        "android_client_info": {
+          "package_name": "com.example.purehours"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638376587168-3v71e04fnm3ambvh4kp0doasd623ita8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpgozCTTcXkmFFBeAW8SqXBJauRrw5W-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638376587168-3v71e04fnm3ambvh4kp0doasd623ita8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "638376587168-omgiv9dj9usfcdrva1gr7g0t002m3lap.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.purehours"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

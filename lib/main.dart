@@ -1,14 +1,23 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:purehours/routeGenrator.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
 import 'package:flutter_background_service_ios/flutter_background_service_ios.dart';
+import 'package:purehours/user/usageScreen.dart';
 import 'dart:io';
 import 'dart:async';
+import 'package:timezone/data/latest.dart' as tz;
+
+import 'package:purehours/utils/notifications.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  NotificationService().initNotification();
+  tz.initializeTimeZones();
+
+  await Firebase.initializeApp();
   await initializeService();
   runApp(const Home());
 }
@@ -58,12 +67,13 @@ void onStart() {
 
   service.setAsForegroundService();
   Timer.periodic(
-    const Duration(seconds: 1),
+    const Duration(minutes: 1),
     (timer) async {
       if (!(await service.isRunning())) timer.cancel();
+      checkTime();
       service.setNotificationInfo(
-        title: "PureHours Background Service",
-        content: "Updated at ${DateTime.now()}",
+        title: "PureHours Service",
+        content: "PureHours is running in background for monitoring",
       );
     },
   );
