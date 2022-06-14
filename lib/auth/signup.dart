@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:purehours/utils/loading.dart';
-
 import '../utils/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -14,6 +13,8 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   bool isLoading = false;
   var authHandler = Auth();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,6 @@ class _SignUpState extends State<SignUp> {
     queryData = MediaQuery.of(context);
     double height = queryData.size.height;
     double heightGrid = height / 100;
-    final TextEditingController _passwordController = TextEditingController();
-    final TextEditingController _usernameController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Pure Hours"),

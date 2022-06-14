@@ -3,6 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools">
     
    <application
+        tools:replace="android:label"
         android:label="purehours"
         android:name="${applicationName}"
         android:icon="@mipmap/appicon"

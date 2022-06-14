@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 
 class CustomScaffold extends StatelessWidget {
   final String title;
@@ -17,6 +18,26 @@ class CustomScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.chat),
+          onPressed: () async {
+            try {
+              dynamic conversationObject = {
+                'appId':
+                    '3314f1dee264d0b8c9941ff7510c3e3b9', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
+              };
+
+              KommunicateFlutterPlugin.buildConversation(conversationObject)
+                  .then((clientConversationId) {
+                print("Conversation builder success : " +
+                    clientConversationId.toString());
+              }).catchError((error) {
+                print("Conversation builder error : " + error.toString());
+              });
+            } catch (e) {
+              print('Conversation Builder Error: ' + e.toString());
+            }
+          }),
       appBar: AppBar(
         title: Text(title),
         actions: [
