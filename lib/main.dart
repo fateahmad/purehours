@@ -8,17 +8,14 @@ import 'package:flutter_background_service_ios/flutter_background_service_ios.da
 import 'package:purehours/user/usageScreen.dart';
 import 'dart:io';
 import 'dart:async';
-import 'package:timezone/data/latest.dart' as tz;
 
 import 'package:purehours/utils/notifications.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   NotificationService().initNotification();
-  tz.initializeTimeZones();
-
+  initializeService();
   await Firebase.initializeApp();
-  await initializeService();
   runApp(const Home());
 }
 
@@ -40,7 +37,6 @@ Future<void> initializeService() async {
 
 void onIosBackground() {
   WidgetsFlutterBinding.ensureInitialized();
-  print('FLUTTER BACKGROUND FETCH');
 }
 
 void onStart() {
@@ -90,12 +86,12 @@ class HomeState extends State<Home> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -105,19 +101,15 @@ class HomeState extends State<Home> with WidgetsBindingObserver {
     switch (state) {
       case AppLifecycleState.paused:
         FlutterBackgroundService().sendData({"action": "setAsForeground"});
-        print("Foreground service");
         break;
       case AppLifecycleState.resumed:
         FlutterBackgroundService().sendData({"action": "setAsBackground"});
-        print("Background service");
         break;
       case AppLifecycleState.inactive:
         FlutterBackgroundService().sendData({"action": "setAsForeground"});
-        print("Foreground service");
         break;
       case AppLifecycleState.detached:
         FlutterBackgroundService().sendData({"action": "setAsBackground"});
-        print("Background service");
         break;
     }
   }
